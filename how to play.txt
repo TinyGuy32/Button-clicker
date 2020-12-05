@@ -1,0 +1,3 @@
+click button 1 to start.
+it will then tell you what button to click.
+click the "exit" button to quit
