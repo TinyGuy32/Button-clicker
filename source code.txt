@@ -1,0 +1,111 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.JavaBean;
+import java.util.Locale;
+import java.util.Random;
+
+public class Main {
+
+    public static int chosen = 1;
+    public static int points = 0;
+
+    public static void main(String[] args) {
+        int[] choices = {1,2,3,4};
+        JWindow game = new JWindow();
+        JPanel content = new JPanel();
+        JButton gameElement1 = new JButton("1");
+        JButton gameElement2 = new JButton("2");
+        JButton gameElement3 = new JButton("3");
+        JButton gameElement4 = new JButton("4");
+        JButton exit = new JButton("exit game");
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"Bye! your score was "+points);
+                System.exit(0);
+            }
+        });
+
+        gameElement1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (chosen==1) {
+                    points += 1;
+                    chosen = getRandom(choices);
+                    JOptionPane.showMessageDialog(null,"click button"+chosen);
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null,"you lost. your score was "+points);
+                    System.exit(0);
+                }
+            }
+        });
+        gameElement2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (chosen==2) {
+                    points += 1;
+                    chosen = getRandom(choices);
+                    JOptionPane.showMessageDialog(null,"click button"+chosen);
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null,"you lost. your score was "+points);
+                    System.exit(0);
+                }
+            }
+        });
+        gameElement3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (chosen==3) {
+                    points += 1;
+                    chosen = getRandom(choices);
+                    JOptionPane.showMessageDialog(null,"click button"+chosen);
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null,"you lost. your score was "+points);
+                    System.exit(0);
+                }
+            }
+        });
+        gameElement4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (chosen==4) {
+                    points += 1;
+                    chosen = getRandom(choices);
+                    JOptionPane.showMessageDialog(null,"click button"+chosen);
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null,"you lost. your score was "+points);
+                    System.exit(0);
+                }
+            }
+        });
+
+        content.setLayout(new BorderLayout());
+
+        game.setContentPane(content);
+        game.getContentPane().add(exit,BorderLayout.CENTER);
+        game.getContentPane().add(gameElement1,BorderLayout.NORTH);
+        game.getContentPane().add(gameElement3,BorderLayout.SOUTH);
+        game.getContentPane().add(gameElement2, BorderLayout.EAST);
+        game.getContentPane().add(gameElement4,BorderLayout.WEST);
+        game.setPreferredSize(new Dimension(200,200));
+        game.setLocation(500,200);
+        game.pack();
+        game.setVisible(true);
+    }
+
+    public static int getRandom(int[] array) {
+        int rnd = new Random().nextInt(array.length);
+        return array[rnd];
+    }
+}
